@@ -1,0 +1,25 @@
+{
+  "name": "rent-a-car",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "prod": "node ./start.js",
+    "watch": "nodemon ./start.js --ignore public",
+    "start": "npm run watch"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.16.0",
+    "express-session": "^1.15.6",
+    "http-errors": "~1.6.2",
+    "jade": "~1.11.0",
+    "lokijs": "^1.5.5",
+    "morgan": "~1.9.0",
+    "node-persist": "^2.1.0",
+    "nodemon": "^1.18.8",
+    "pug": "^2.0.3",
+    "require.js": "^1.0.0",
+    "uuid": "^3.3.2"
+  }
+}
