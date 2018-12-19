@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "prod": "node ./start.js",
-    "watch": "nodemon ./start.js --ignore public",
+    "watch": "nodemon ./start.js --ignore public --ignore database.json",
     "start": "npm run watch"
   },
   "dependencies": {
