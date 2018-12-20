@@ -77,7 +77,7 @@ const reservations = {
             "datumOd": 1545177600,
             "datumDo": 1545696000,
             "kupac": "b293545a-6544-421e-8641-8745ae3b6833",
-            "cena": "2000",
+            "cena": 2000,
             "valuta": "RSD",
             "placena": true
 
@@ -87,7 +87,7 @@ const reservations = {
             "datumOd": 1545782400,
             "datumDo": 1546041600,
             "kupac": "b293545a-6544-421e-8641-8745ae3b6833",
-            "cena": "2000",
+            "cena": 2000,
             "valuta": "RSD",
             "placena": true
 
@@ -97,7 +97,7 @@ const reservations = {
             "datumOd": 1546646400,
             "datumDo": 1547078400,
             "kupac": "b293545a-6544-421e-8641-8745ae3b6833",
-            "cena": "2000",
+            "cena": 2000,
             "valuta": "RSD",
             "placena": true
 
