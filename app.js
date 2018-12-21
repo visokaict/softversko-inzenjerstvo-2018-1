@@ -10,6 +10,11 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+require('dotenv').config();
+if (process.env.NODE_ENV === "production") {
+    console.log = function () {
+    };
+}
 
 app.use(logger('dev'));
 app.use(express.json());

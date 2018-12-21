@@ -8,7 +8,7 @@ module.exports.add = function add(req, res) {
 
     if (validation !== true) {
         res.status(400).send(validation);
-        return
+        return;
     }
     if (Reservation.checkAvailability(idVozila, datumOd, datumDo)) {
         let reservation = new Reservation(...Object.values(req.body));
