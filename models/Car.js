@@ -15,12 +15,6 @@ class Car {
         this.kubikaza = kubikaza;
         this.dostupnost = dostupnost;
     }
-
-    static find(terms) {
-        let collection = db.getCollection("cars");
-        return collection.find(terms);
-    }
-
 }
 
 module.exports = Car;

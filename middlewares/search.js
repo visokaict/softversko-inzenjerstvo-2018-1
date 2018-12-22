@@ -1,8 +1,12 @@
-const Car = require('../models/Car');
+const dbsetup = require('../dbsetup');
+const db = dbsetup.db;
 
 module.exports.search = function search(req, res) {
     let queryEntries = Object.entries(req.query);
     let newQuery = {};
+    let searchItem = req.params.searchItem;
+
+
 
     //query operatori za filtriranje se pretvaraju u objekte
     queryEntries.forEach((entry) => {
@@ -12,8 +16,8 @@ module.exports.search = function search(req, res) {
             newQuery[entry[0]] = entry[1];
         }
     });
-
-    let results = Car.find(newQuery);
+    let collection = db.getCollection(searchItem);
+    let results = collection.find(newQuery);
     if (results.length === 0)
         res.status(204).end();
     else
