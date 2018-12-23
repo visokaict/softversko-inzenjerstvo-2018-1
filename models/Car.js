@@ -5,7 +5,7 @@ const db = dbsetup.db;
 
 class Car {
     constructor(tablice, modelVozila, godiste, boja, menjac, sedista, kubikaza, dostupnost) {
-        this.idVozila = uuidv4();
+        this.id = uuidv4();
         this.tablice = tablice;
         this.modelVozila = modelVozila;
         this.godiste = godiste;

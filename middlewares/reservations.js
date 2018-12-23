@@ -1,6 +1,6 @@
 const Reservation = require('../models/Reservation');
 
-module.exports.add = function add(req, res) {
+module.exports.addReservation = function add(req, res) {
     let {kupac, idVozila, datumOd, datumDo, cena, valuta, placena} = req.body;
 
     let reservation = new Reservation(...Object.values(req.body));
@@ -12,7 +12,6 @@ module.exports.add = function add(req, res) {
     }
     if (Reservation.checkAvailability(idVozila, datumOd, datumDo)) {
         let reservation = new Reservation(...Object.values(req.body));
-        console.log(reservation);
         reservation.addToDB();
         res.status(201).end();
     } else
