@@ -5,7 +5,7 @@ const dateOverlap = require('../helpers/dateOverlap');
 
 class Reservation {
     constructor(kupac, idVozila, datumOd, datumDo, cena, valuta, placena) {
-        this.idRezervacije = uuidv4();
+        this.id = uuidv4();
         this.kupac = kupac;
         this.idVozila = idVozila;
         this.datumOd = datumOd;
@@ -19,8 +19,8 @@ class Reservation {
         const collectionRes = db.getCollection("reservations");
         const collectionCar = db.getCollection("cars");
 
-        let reservations = collectionRes.find({idVozila: idVozila});
-        let car = collectionCar.find({idVozila: idVozila})[0];
+        let reservations = collectionRes.find({id: idVozila});
+        let car = collectionCar.find({id: idVozila})[0];
 
         if (!car.dostupnost)
             return false;
@@ -41,7 +41,7 @@ class Reservation {
         if (typeof this.kupac !== "string") {
             error += "\nKupac mora biti string"
         }
-        if (!this.idVozila.toString().match(uuid) || ((typeof this.idVozila.match) === "string")) {
+        if (!this.id.toString().match(uuid) || ((typeof this.id.match) === "string")) {
             error += "\nidVozila mora biti uuidv4"
         }
         if ((!(new Date(this.datumOd).getTime() > 0) || typeof this.datumDo !== "number")) {
