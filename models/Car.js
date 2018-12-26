@@ -21,35 +21,35 @@ class Car {
         collection.insert(this);
     }
 
-    validate() {
+    static validate(car, update) {
         const collection = db.getCollection("cars");
 
         let error = "";
-        if (typeof this.tablice !== "string") {
+        if (typeof car.tablice !== "string") {
             error += "\nTablice moraju biti string";
         }
-        if (typeof this.modelVozila !== "string") {
+        if (typeof car.modelVozila !== "string") {
             error += "\nModel mora biti string";
         }
-        if (typeof this.godiste !== "number" || !this.godiste.toString().match(/([0-9]){4}/)) {
+        if (typeof car.godiste !== "number" || !car.godiste.toString().match(/([0-9]){4}/)) {
             error += "\nGodiste mora biti godina";
         }
-        if (typeof this.boja !== "string") {
+        if (typeof car.boja !== "string") {
             error += "\nBoja mora biti string";
         }
-        if (typeof this.menjac !== "string" && (this.menjac !== "Automatski" && this.menjac !== "Manuelni")) {
+        if (typeof car.menjac !== "string" && (car.menjac !== "Automatski" && car.menjac !== "Manuelni")) {
             error += "\nMenjač može biti manuelni ili automatski";
         }
-        if (typeof this.sedista !== "number" || !this.sedista.toString().match(/([0-9]){1}/)) {
+        if (typeof car.sedista !== "number" || !car.sedista.toString().match(/([0-9]){1}/)) {
             error += "\nBroj sedišta mora biti jednocifren broj";
         }
-        if (typeof this.kubikaza !== "number") {
+        if (typeof car.kubikaza !== "number") {
             error += "\nKubikaža mora biti broj"
         }
-        if (typeof this.dostupnost !== "boolean") {
+        if (typeof car.dostupnost !== "boolean") {
             error += "\nDostupnost mora biti boolean"
         }
-        if (collection.find({tablice: this.tablice}).length !== 0) {
+        if ((collection.find({tablice: car.tablice}).length !== 0) && update === undefined) {
             error += "\nVozilo sa takvom registracijom već postoji"
         }
         if (error === "")
