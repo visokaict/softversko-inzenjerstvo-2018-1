@@ -1,6 +1,6 @@
 const Car = require('../models/Car');
 
-module.exports.addCar = function search(req, res) {
+module.exports.addCar = function addCar(req, res) {
     let car = new Car(...Object.values(req.body));
     let validation = car.validate();
 

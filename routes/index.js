@@ -16,6 +16,6 @@ router.get('/cars/:id', getItem);
 router.get('/reservations/:id', getItem);
 
 router.delete('/reservations/:id/', removeItem);
-
+router.delete('/cars/:id/', removeItem);
 
 module.exports = router;
