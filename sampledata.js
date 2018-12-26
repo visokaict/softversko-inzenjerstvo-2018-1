@@ -8,7 +8,7 @@ const cars = {
             "boja": "Plava",
             "menjac": "Manuelni",
             "sedista": 4,
-            "kubikaza": "1400cc",
+            "kubikaza": 1400,
             "dostupnost": true
         },
         {
@@ -19,7 +19,7 @@ const cars = {
             "boja": "Narandžasta",
             "menjac": "Automatski",
             "sedista": 4,
-            "kubikaza": "1200cc",
+            "kubikaza": 1200,
             "dostupnost": true
         },
         {
@@ -30,7 +30,7 @@ const cars = {
             "boja": "Tamno plava",
             "menjac": "Manuelni",
             "sedista": 4,
-            "kubikaza": "2300cc",
+            "kubikaza": 2300,
             "dostupnost": true
         },
         {
@@ -41,7 +41,7 @@ const cars = {
             "boja": "Bela",
             "menjac": "Manuelni",
             "sedista": 4,
-            "kubikaza": "2500cc",
+            "kubikaza": 2500,
             "dostupnost": true
         },
         {
@@ -52,7 +52,7 @@ const cars = {
             "boja": "Siva",
             "menjac": "Manuelni",
             "sedista": 4,
-            "kubikaza": "3000cc",
+            "kubikaza": 3000,
             "dostupnost": false
         },
         {
@@ -63,7 +63,7 @@ const cars = {
             "boja": "Bela",
             "menjac": "Automatski",
             "sedista": 4,
-            "kubikaza": "2000cc",
+            "kubikaza": 2000,
             "dostupnost": true
         }
     ]
