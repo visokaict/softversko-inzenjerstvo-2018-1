@@ -9,6 +9,6 @@ module.exports.addCar = function addCar(req, res) {
         return;
     } else
         car.addToDB();
-    res.status(200).end();
+    res.status(201).end();
 
 };

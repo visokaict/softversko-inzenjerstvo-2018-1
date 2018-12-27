@@ -6,7 +6,7 @@ const getItem = require('../middlewares/getItem').getItem;
 const removeItem = require('../middlewares/remove').removeItem;
 const addCar = require('../middlewares/addCar').addCar;
 const update = require('../middlewares/update').update;
-
+const signUp = require('../middlewares/signUp').signUp;
 
 
 router.get('/cars/search', search);
@@ -25,5 +25,7 @@ router.delete('/reservations/:id/', removeItem);
 router.delete('/cars/:id/', removeItem);
 
 router.patch('/cars/:id', update);
+
+router.post('/users/signup', signUp);
 
 module.exports = router;
