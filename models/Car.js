@@ -31,7 +31,7 @@ class Car {
         if (typeof car.modelVozila !== "string") {
             error += "\nModel mora biti string";
         }
-        if (typeof car.godiste !== "number" || !car.godiste.toString().match(/([0-9]){4}/)) {
+        if (typeof car.godiste !== "number" || !car.godiste.toString().match(/[1-9][0-9]{3}/)) {
             error += "\nGodiste mora biti godina";
         }
         if (typeof car.boja !== "string") {
@@ -40,7 +40,7 @@ class Car {
         if (typeof car.menjac !== "string" && (car.menjac !== "Automatski" && car.menjac !== "Manuelni")) {
             error += "\nMenjač može biti manuelni ili automatski";
         }
-        if (typeof car.sedista !== "number" || !car.sedista.toString().match(/([0-9]){1}/)) {
+        if (typeof car.sedista !== "number" || !car.sedista.toString().match(/([0-9])/)) {
             error += "\nBroj sedišta mora biti jednocifren broj";
         }
         if (typeof car.kubikaza !== "number") {
