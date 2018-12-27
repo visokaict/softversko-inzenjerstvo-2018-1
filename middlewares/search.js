@@ -6,7 +6,6 @@ module.exports.search = function search(req, res) {
     let newQuery = {};
     let searchItem = req.path.split("/")[1];
 
-
     //obrada query stringova
     queryEntries.forEach((entry) => {
 
