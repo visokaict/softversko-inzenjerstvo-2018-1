@@ -35,32 +35,32 @@ class Reservation {
     }
 
     validate() {
-        let error = "";
+        let error = [];
         const uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
         const alphaCurrency = /([A-Z]){3}/g;
         if (typeof this.kupac !== "string") {
-            error += "\nKupac mora biti string"
+            error.push("Kupac mora biti string")
         }
         if (!this.id.toString().match(uuid) || ((typeof this.id.match) === "string")) {
-            error += "\nidVozila mora biti uuidv4"
+            error.push("idVozila mora biti uuidv4");
         }
         if ((!(new Date(this.datumOd).getTime() > 0) || typeof this.datumDo !== "number")) {
-            error += "\ndatumOd mora biti unix timestamp"
+            error.push("datumOd mora biti unix timestamp");
         }
         if ((!(new Date(this.datumDo).getTime() > 0) || typeof this.datumDo !== "number")) {
-            error += "\ndatumDo mora biti unix timestamp"
+            error.push("datumDo mora biti unix timestamp");
         }
         if (typeof this.cena !== "number") {
-            error += "\ncena mora biti broj"
+            error.push("cena mora biti broj");
         }
         if (!this.valuta.match(alphaCurrency) || this.valuta.length !== 3) {
-            error += "\nvaluta mora biti slovna oznaka valute"
+            error.push("valuta mora biti slovna oznaka valute");
         }
         if (typeof this.placena !== "boolean") {
-            error += "\nplacena mora biti boolean"
+            error.push("placena mora biti boolean");
         }
 
-        if (error === "")
+        if (error.length === 0)
             return true;
         else
             return error;

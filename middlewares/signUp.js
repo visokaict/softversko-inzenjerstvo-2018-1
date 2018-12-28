@@ -9,7 +9,7 @@ module.exports.signUp = function (req, res) {
         )
     );
 
-    let validation = User.validate(newUser, false, req.body.lozinka);
+    let validation = User.validate(newUser, false, true, req.body.lozinka);
 
     if (validation !== true) {
         res.status(400).send(validation);

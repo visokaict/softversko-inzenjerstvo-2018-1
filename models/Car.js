@@ -24,35 +24,35 @@ class Car {
     static validate(car, update) {
         const collection = db.getCollection("cars");
 
-        let error = "";
+        let error = [];
         if (typeof car.tablice !== "string") {
-            error += "\nTablice moraju biti string";
+            error.push("Tablice moraju biti string");
         }
         if (typeof car.modelVozila !== "string") {
-            error += "\nModel mora biti string";
+            error.push("Model mora biti string");
         }
         if (typeof car.godiste !== "number" || !car.godiste.toString().match(/[1-9][0-9]{3}/)) {
-            error += "\nGodiste mora biti godina";
+            error.push("Godiste mora biti godina");
         }
         if (typeof car.boja !== "string") {
-            error += "\nBoja mora biti string";
+            error.push("Boja mora biti string");
         }
         if (typeof car.menjac !== "string" && (car.menjac !== "Automatski" && car.menjac !== "Manuelni")) {
-            error += "\nMenjač može biti manuelni ili automatski";
+            error.push("Menjač može biti manuelni ili automatski");
         }
         if (typeof car.sedista !== "number" || !car.sedista.toString().match(/([0-9])/)) {
-            error += "\nBroj sedišta mora biti jednocifren broj";
+            error.push("Broj sedišta mora biti jednocifren broj");
         }
         if (typeof car.kubikaza !== "number") {
-            error += "\nKubikaža mora biti broj"
+            error.push("Kubikaža mora biti broj");
         }
         if (typeof car.dostupnost !== "boolean") {
-            error += "\nDostupnost mora biti boolean"
+            error.push("Dostupnost mora biti boolean");
         }
         if ((collection.find({tablice: car.tablice}).length !== 0) && !update) {
-            error += "\nVozilo sa takvom registracijom već postoji"
+            error.push("Vozilo sa takvom registracijom već postoji");
         }
-        if (error === "")
+        if (error.length === 0)
             return true;
         else
             return error;

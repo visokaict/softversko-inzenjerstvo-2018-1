@@ -22,31 +22,31 @@ class User {
         collection.insert(this);
     }
 
-    static validate(user, update = false, lozinka) {
+    static validate(user, update = false, passwdreset, lozinka = "") {
         const collection = db.getCollection("users");
         let passwordStrength = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{6,}/;
         let email = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-        let error = "";
+        let error = [];
         if ((typeof user.korIme !== "string")) {
-            error += "\nkorIme mora biti string";
+            error.push("korIme mora biti string")
         }
         if (typeof user.ime !== "string") {
-            error += "\nime mora biti string";
+            error.push("ime mora biti string");
         }
         if (!user.email.match(email)) {
-            error += "\nemail adresa nije validna";
+            error.push("email adresa nije validna");
         }
         if (collection.find({korIme: user.korIme}).length !== 0 && !update) {
-            error += "\nkorIme nije jedinstveno"
+            error.push("korIme nije jedinstveno");
         }
         if (collection.find({email: user.email, id: {$ne: user.id}}).length !== 0) {
-            error += "\nemail je već u upotrebi"
+            error.push("email je već u upotrebi");
         }
-        if (!lozinka.match(passwordStrength)) {
-            error += "\nlozinka mora da sadrži minimalno 6 karaktera, broj i veliko slovo";
+        if (!lozinka.match(passwordStrength) && passwdreset) {
+            error.push("lozinka mora da sadrži minimalno 6 karaktera, broj i veliko slovo");
         }
-        if (error === "")
+        if (error.length === 0)
             return true;
         else
             return error;

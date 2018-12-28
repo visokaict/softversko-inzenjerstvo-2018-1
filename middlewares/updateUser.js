@@ -6,7 +6,7 @@ const bcrypt = require('bcryptjs');
 module.exports.updateUser = function (req, res) {
     let collection = db.getCollection("users");
     let salt = bcrypt.genSaltSync(10);
-
+    let passwdreset = true;
 
     let result = Object.assign({}, collection.findOne({"id": req.params.id}));
 
@@ -14,11 +14,14 @@ module.exports.updateUser = function (req, res) {
         res.status(404).end();
     }
 
+    req.body.lozinka ? passwdreset = true : passwdreset = false;
+    console.log(passwdreset);
+
     let newUser = Object.assign(result, req.body);
-    let validation = User.validate(newUser, true, req.body.lozinka || "aaaaaA1");
+    let validation = User.validate(newUser, true, passwdreset, req.body.lozinka);
 
     if (validation !== true) {
-        res.status(404).send(validation)
+        res.status(400).send(validation)
     } else {
         collection.findAndUpdate({"id": req.params.id}, (result) => {
             if (req.body.lozinka) {

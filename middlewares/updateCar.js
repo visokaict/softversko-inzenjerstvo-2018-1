@@ -17,7 +17,7 @@ module.exports.update = function (req, res) {
     this.validate = Car.validate(Object.assign(resultValidation, req.body), true);
 
     if (validate !== true) {
-        res.status(404).send(validate)
+        res.status(400).send(validate)
     } else {
         collection.findAndUpdate({"id": id}, (result) => {
             Object.assign(result, req.body);
