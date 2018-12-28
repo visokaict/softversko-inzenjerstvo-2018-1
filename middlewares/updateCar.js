@@ -2,7 +2,7 @@ const dbsetup = require('../dbsetup');
 const db = dbsetup.db;
 const Car = require('../models/Car');
 
-module.exports.update = function update(req, res) {
+module.exports.update = function (req, res) {
     let id = req.params.id;
     let itemType = req.path.split("/")[1];
     let collection = db.getCollection(itemType);
@@ -10,22 +10,18 @@ module.exports.update = function update(req, res) {
     let result = collection.findOne({"id": id});
     let resultValidation = Object.assign({}, result);
 
-    if (!result)
+    if (!result) {
         res.status(404).end();
-
-    if (itemType === "cars") {
-        this.validate = Car.validate(Object.assign(resultValidation, req.body), "update");
     }
 
+    this.validate = Car.validate(Object.assign(resultValidation, req.body), true);
+
     if (validate !== true) {
-        res.status(404).send(validate)
+        res.status(400).send(validate)
     } else {
         collection.findAndUpdate({"id": id}, (result) => {
             Object.assign(result, req.body);
         });
+        res.status(200).end();
     }
-
-    res.status(200).end();
-
-
 };

@@ -1,14 +1,29 @@
 const Car = require('../models/Car');
 
-module.exports.addCar = function addCar(req, res) {
-    let car = new Car(...Object.values(req.body));
-    let validation = Car.validate(car);
+module.exports.addCar = function (req, res) {
+    let carOrder = {
+        tablice: "",
+        modelVozila: "",
+        godiste: "",
+        boja: "",
+        menjac: "",
+        sedista: "",
+        kubikaza: "",
+        dostupnost: ""
+    };
+
+    let car = new Car(
+        ...Object.values(
+            Object.assign(carOrder, req.body)
+        )
+    );
+
+    let validation = Car.validate(car, false);
 
     if (validation !== true) {
         res.status(400).send(validation);
-        return;
-    } else
+    } else {
         car.addToDB();
-    res.status(200).end();
-
+        res.status(201).end();
+    }
 };
