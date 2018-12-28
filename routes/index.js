@@ -9,12 +9,13 @@ const update = require('../middlewares/updateCar').update;
 const signUp = require('../middlewares/signUp').signUp;
 const updateUser = require('../middlewares/updateUser').updateUser;
 const signIn = require('../middlewares/signIn').signIn;
+const authenticate = require('../middlewares/authenticate').authenticate;
 
 router.get('/cars/search', search);
 router.get('/reservations/search', search);
 
 router.put('/reservations/', addReservation);
-router.put(/cars/, addCar);
+router.put(/cars/, authenticate, addCar);
 
 router.get('/cars/:id', getItem);
 router.get('/reservations/:id', getItem);
