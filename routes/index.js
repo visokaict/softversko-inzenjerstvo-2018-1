@@ -8,6 +8,7 @@ const addCar = require('../middlewares/addCar').addCar;
 const update = require('../middlewares/updateCar').update;
 const signUp = require('../middlewares/signUp').signUp;
 const updateUser = require('../middlewares/updateUser').updateUser;
+const signIn = require('../middlewares/signIn').signIn;
 
 router.get('/cars/search', search);
 router.get('/reservations/search', search);
@@ -32,5 +33,5 @@ router.patch('/cars/:id', update);
 router.patch('/users/:id', updateUser);
 
 router.post('/users/signup', signUp);
-
+router.post('/login', signIn);
 module.exports = router;
