@@ -73,7 +73,7 @@ const users = {
     name: "users", data: [
         {
             "lozinkaHash": "$2a$10$abT3vapJUO0u68N0Bksz1OvYRaEicGp2MMSMMR2WlFMvhZvvIHdxa",
-            "idKorisnika": "18d52f65-dd05-41c9-886f-60b334f2662f",
+            "id": "18d52f65-dd05-41c9-886f-60b334f2662f",
             "korIme": "Korisnik1",
             "ime": "Korisnik Korisniković",
             "email": "korisnik1@ggmail.com",

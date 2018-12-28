@@ -32,6 +32,5 @@ module.exports.updateUser = function (req, res) {
             }
         });
         res.status(200).end();
-
     }
 };

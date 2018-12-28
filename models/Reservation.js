@@ -19,7 +19,7 @@ class Reservation {
         const collectionRes = db.getCollection("reservations");
         const collectionCar = db.getCollection("cars");
 
-        let reservations = collectionRes.find({id: idVozila});
+        let reservations = collectionRes.find({idVozila: idVozila});
         let car = collectionCar.find({id: idVozila})[0];
 
         if (!car.dostupnost)

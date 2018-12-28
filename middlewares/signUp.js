@@ -1,14 +1,20 @@
 const User = require('../models/User');
 
-module.exports.signUp = function signUp(req, res) {
-    console.log(req.body);
-    let newUser = new User(...Object.values(req.body));
+module.exports.signUp = function (req, res) {
+    let userOrder = {korIme: "", ime: "", lozinka: "", email: "", tipKorisnika: ""};
+
+    let newUser = new User(
+        ...Object.values(
+            Object.assign(userOrder, req.body)
+        )
+    );
+
     let validation = User.validate(newUser, false, req.body.lozinka);
+
     if (validation !== true) {
         res.status(400).send(validation);
-        return;
-    } else
+    } else {
         newUser.addToDB();
-    res.status(201).end();
-
+        res.status(201).end();
+    }
 };

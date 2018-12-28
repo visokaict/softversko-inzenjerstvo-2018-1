@@ -49,7 +49,7 @@ class Car {
         if (typeof car.dostupnost !== "boolean") {
             error += "\nDostupnost mora biti boolean"
         }
-        if ((collection.find({tablice: car.tablice}).length !== 0) && update === undefined) {
+        if ((collection.find({tablice: car.tablice}).length !== 0) && !update) {
             error += "\nVozilo sa takvom registracijom već postoji"
         }
         if (error === "")

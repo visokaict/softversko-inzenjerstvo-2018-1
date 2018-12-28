@@ -9,7 +9,7 @@ class User {
         let salt = bcrypt.genSaltSync(10);
 
         this.lozinkaHash = bcrypt.hashSync(lozinka, salt);
-        this.idKorisnika = uuidv4();
+        this.id = uuidv4();
         this.korIme = korIme;
         this.ime = ime;
         this.email = email;
