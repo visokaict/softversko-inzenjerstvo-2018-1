@@ -8,7 +8,7 @@ class User {
     constructor(korIme, ime, lozinka, email, tipKorisnika) {
         let salt = bcrypt.genSaltSync(10);
 
-        this.lozinkaHash = bcrypt.hash(lozinka, salt);
+        this.lozinkaHash = bcrypt.hashSync(lozinka, salt);
         this.idKorisnika = uuidv4();
         this.korIme = korIme;
         this.ime = ime;
@@ -22,25 +22,25 @@ class User {
         collection.insert(this);
     }
 
-    validate(lozinka) {
+    static validate(user, update = false, lozinka) {
         const collection = db.getCollection("users");
         let passwordStrength = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{6,}/;
         let email = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
         let error = "";
-        if (typeof this.korIme !== "string") {
+        if ((typeof user.korIme !== "string")) {
             error += "\nkorIme mora biti string";
         }
-        if (typeof this.ime !== "string") {
+        if (typeof user.ime !== "string") {
             error += "\nime mora biti string";
         }
-        if (!this.email.match(email)) {
+        if (!user.email.match(email)) {
             error += "\nemail adresa nije validna";
         }
-        if (collection.find({korIme: this.korIme}).length !== 0) {
+        if (collection.find({korIme: user.korIme}).length !== 0 && !update) {
             error += "\nkorIme nije jedinstveno"
         }
-        if (collection.find({email: this.email}).length !== 0) {
+        if (collection.find({email: user.email, id: {$ne: user.id}}).length !== 0) {
             error += "\nemail je već u upotrebi"
         }
         if (!lozinka.match(passwordStrength)) {

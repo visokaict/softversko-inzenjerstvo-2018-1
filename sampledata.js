@@ -69,7 +69,26 @@ const cars = {
     ]
 };
 
-const users = {name: "users", data: []};
+const users = {
+    name: "users", data: [
+        {
+            "lozinkaHash": "$2a$10$abT3vapJUO0u68N0Bksz1OvYRaEicGp2MMSMMR2WlFMvhZvvIHdxa",
+            "idKorisnika": "18d52f65-dd05-41c9-886f-60b334f2662f",
+            "korIme": "Korisnik1",
+            "ime": "Korisnik Korisniković",
+            "email": "korisnik1@ggmail.com",
+            "tipKorisnika": "Kupac",
+        },
+        {
+            "lozinkaHash": "$2a$10$IIPoxjAb.yw5T7DBAlXGXOgawWDJ5GM1mm18b/ZxQvEBe66emyNha",
+            "id": "8b2fee33-4bf2-4f5f-9444-a714c1e29e95",
+            "korIme": "Korisnik2",
+            "ime": "Korisnik Korisniković",
+            "email": "korisnik2@ggmail.com",
+            "tipKorisnika": "Kupac",
+        }
+    ]
+};
 const reservations = {
     name: "reservations", data: [
         {
